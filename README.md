@@ -1,11 +1,11 @@
 # 📚 Softawre Design - 2026
 
-# Project: [Insert Project Name Here]
+# Project: Mini-StackOverflow
 
 ## 👤 Student Information
-* **Name:** [Insert Full Name]
-* **GitHub Username:** @[Insert Username]
-* **Group:** [e.g., 30222-1]
+* **Name:** Reti Antonio
+* **GitHub Username:** @retiantonio
+* **Group:** 30232
 
 ---
 
