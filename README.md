@@ -15,7 +15,7 @@
 | Milestone  | Tag | Submission Date | Status |
 | :--- | :--- | :--- | :--: |
 | Project Deliverable 1 | `v1.0` | 30/03/2026 | 🟢 Submitted |
-| Project Deliverable 2 | `v2.0` | [Date] | 🟢 Submitted / 🔴 Pending |
+| Project Deliverable 2 | `v2.0` | 20/04/2026 | 🟢 Submitted |
 | Project Deliverable 3 | `v3.0` | [Date] | 🟢 Submitted / 🔴 Pending |
 | Project Final Implementation | `v4.0` | [Date] | 🟢 Submitted / 🔴 Pending |
 
