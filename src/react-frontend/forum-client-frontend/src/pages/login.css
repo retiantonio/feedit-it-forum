@@ -1,0 +1,152 @@
+/* Container and Background */
+.page-container {
+  min-height: 100vh;
+  background-color: #0f0f0f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', system-ui, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 107, 0, 0.07) 0%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* The Card */
+.login-card {
+  background-color: #1a1a1a;
+  width: 100%;
+  max-width: 420px;
+  padding: 50px 40px;
+  border-radius: 45px; /* Deep rounding */
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid #2a2a2a;
+  text-align: center;
+  z-index: 2;
+}
+
+/* Branding */
+.star-icon {
+  font-size: 42px;
+  color: #ff6b00;
+  margin-bottom: 10px;
+}
+
+.logo {
+  color: #ff6b00;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.logo span {
+  color: #ffffff;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+/* Form Elements */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.premium-input {
+  width: 100%;
+  background-color: #262626;
+  border: 1px solid #333;
+  border-radius: 24px;
+  padding: 18px 24px;
+  font-size: 15px;
+  color: #fff;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+}
+
+/* Input Focus Highlight */
+.premium-input:focus {
+  border-color: #ff6b00;
+  background-color: #1c1c1c;
+  box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.15); /* The soft halo */
+}
+
+/* The Button */
+.login-btn {
+  background-color: #ff6b00;
+  color: #000;
+  border: none;
+  border-radius: 24px;
+  padding: 18px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Button Hover Highlight */
+.login-btn:hover:not(:disabled) {
+  background-color: #ff8533;
+  transform: translateY(-2px); /* Slight lift */
+  box-shadow: 0 10px 20px rgba(255, 107, 0, 0.2);
+}
+
+/* Button Click/Active State */
+.login-btn:active:not(:disabled) {
+  transform: translateY(0); /* Press back down */
+}
+
+.login-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Footer & Links */
+.login-footer {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #888;
+}
+
+.link {
+  color: #ff6b00;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 5px;
+  transition: opacity 0.2s;
+}
+
+.link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.version-tag {
+  margin-top: 20px;
+  color: #333;
+  font-size: 10px;
+  font-family: monospace;
+  letter-spacing: 2px;
+}
