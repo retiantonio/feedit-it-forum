@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "users")
@@ -12,15 +14,14 @@ import lombok.*;
 @Getter @Setter @NoArgsConstructor
 public abstract class UserAbstract {
 
-    //BUSINESS LOGIC
     @Id
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private boolean suspended = false;
+    @Column(name = "suspended_until")
+    private LocalDateTime suspendedUntil;
 
-    //REGISTRATION DATA
     @NotBlank(message = "Username is required.")
     @Column(nullable = false, unique = true)
     private String username;
@@ -32,5 +33,9 @@ public abstract class UserAbstract {
     @NotBlank(message = "Password is required.")
     @Column(nullable = false)
     private String password;
+
+    public boolean isSuspended() {
+        return suspendedUntil != null && suspendedUntil.isAfter(LocalDateTime.now());
+    }
 
 }

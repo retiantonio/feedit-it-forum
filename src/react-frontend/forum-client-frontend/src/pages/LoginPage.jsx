@@ -2,14 +2,22 @@ import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import './Auth.css'
 
+import { getErrorMessage } from '../utils/errorHelper'
+
+import germanShepardFilled from '../assets/german-shepard-filled.svg'
+
 import authService from '../services/authService'
 
 function LoginPage() {
   const navigate = useNavigate()
   const [form, setForm] = useState({ username: '', password: '' })
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value })
+    setError('')
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -17,36 +25,42 @@ function LoginPage() {
 
     try {
       const data = await authService.login(form.username, form.password)
+
       console.log('Logged in successfully:', data)
 
-      // Redirect to home or dashboard
       navigate('/')
     } catch (error) {
-      const resMessage =
-        (error.response && error.response.data && error.response.data.message) ||
-        error.message ||
-        error.toString()
-
-      alert('Login failed: ' + resMessage)
+      setError(getErrorMessage(error))
     } finally {
       setLoading(false)
     }
   }
   return (
     <div className='auth-page'>
+      <div className='moving-bg-layer' />
       <div className='auth-glow' />
       <div className='auth-card'>
-        <div className='auth-icon'>✦</div>
         <h1 className='auth-logo'>
+          <img
+            src={germanShepardFilled}
+            alt='German Shepherd'
+            style={{
+              height: '1.8em',
+              marginRight: '-4px',
+              filter: 'drop-shadow(0 0 8px rgba(208, 96, 255, 0.8))',
+            }}
+          />
           FEED<span>IT</span>
         </h1>
         <p className='auth-subtitle'>Execute secure login to the stack</p>
+
+        {error && <div className='auth-error'>{error}</div>}
 
         <form onSubmit={handleSubmit} className='auth-form'>
           <input
             name='username'
             placeholder='Username'
-            className='auth-input'
+            className='input-style'
             onChange={handleChange}
             required
           />
@@ -54,7 +68,7 @@ function LoginPage() {
             name='password'
             type='password'
             placeholder='Password'
-            className='auth-input'
+            className='input-style'
             onChange={handleChange}
             required
           />

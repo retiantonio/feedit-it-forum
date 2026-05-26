@@ -1,0 +1,96 @@
+/* ANSWER FORM */
+.reply-form {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.6), rgba(22, 33, 62, 0.5));
+  border: 1px solid rgba(180, 79, 255, 0.25);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-shadow: 0 0 15px rgba(180, 79, 255, 0.08);
+}
+
+.reply-form:focus-within {
+  border-color: rgba(180, 79, 255, 0.45);
+  box-shadow: 0 0 25px rgba(180, 79, 255, 0.15);
+}
+
+.reply-input {
+  width: 100%;
+  background: rgba(26, 26, 46, 0.6);
+  border: 1px solid rgba(180, 79, 255, 0.25);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 14px;
+  color: #f0eaff;
+  outline: none;
+  resize: none;
+  min-height: 100px;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  line-height: 1.5;
+}
+
+.reply-input::placeholder {
+  color: #7b6f90;
+}
+
+.reply-input:focus {
+  border-color: #b44fff;
+  box-shadow: 0 0 20px rgba(180, 79, 255, 0.3);
+  background: rgba(26, 26, 46, 0.75);
+}
+
+.reply-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.reply-cancel-btn {
+  background: rgba(180, 79, 255, 0.12);
+  border: 1px solid rgba(180, 79, 255, 0.3);
+  color: #b8a8d0;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.2s ease;
+}
+
+.reply-cancel-btn:hover {
+  border-color: rgba(180, 79, 255, 0.5);
+  color: #d060ff;
+  background: rgba(180, 79, 255, 0.2);
+}
+
+.reply-submit-btn {
+  background: linear-gradient(135deg, #b44fff, #ff2d78);
+  color: #f0eaff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 12px rgba(180, 79, 255, 0.2);
+}
+
+.reply-submit-btn:hover:not(:disabled) {
+  box-shadow: 0 0 20px rgba(180, 79, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.reply-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

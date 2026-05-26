@@ -1,0 +1,28 @@
+.vote-panel-horizontal {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vote-panel-horizontal .vote-btn {
+  border-radius: 20px;
+  width: 32px;
+  height: 32px;
+}
+
+.vote-panel-horizontal .vote-count {
+  font-size: 14px;
+  font-weight: 700;
+  min-width: 8px;
+  text-align: center;
+  color: #d060ff;
+  text-shadow: 0 0 6px rgba(208, 96, 255, 0.3);
+}
+
+.vote-panel-horizontal .vote-btn.up-active,
+.vote-panel-horizontal .vote-btn.down-active {
+  color: #00f5ff;
+  border-color: #00f5ff;
+  background: rgba(0, 245, 255, 0.1);
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.3);
+}

@@ -3,6 +3,9 @@ package com.retiantonio.onlineforum.service;
 import com.retiantonio.onlineforum.dtos.request.LoginRequest;
 import com.retiantonio.onlineforum.dtos.request.RegisterRequest;
 import com.retiantonio.onlineforum.dtos.response.AuthResponse;
+import com.retiantonio.onlineforum.exceptions.AccountSuspendedException;
+import com.retiantonio.onlineforum.exceptions.AlreadyExistsException;
+import com.retiantonio.onlineforum.exceptions.ResourceNotFoundException;
 import com.retiantonio.onlineforum.model.Moderator;
 import com.retiantonio.onlineforum.model.RegularUser;
 import com.retiantonio.onlineforum.model.UserAbstract;
@@ -13,6 +16,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
@@ -25,10 +30,10 @@ public class AuthService {
 
     public AuthResponse register(RegisterRequest request) {
         if (userRepository.existsByUsername(request.getUsername())) {
-            throw new RuntimeException("Username already taken");
+            throw new AlreadyExistsException("Username already taken");
         }
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Email already registered");
+            throw new AlreadyExistsException("Email already registered");
         }
 
         UserAbstract user = request.isModerator() ? new Moderator() : new RegularUser();
@@ -41,7 +46,7 @@ public class AuthService {
 
         String role = (user instanceof Moderator) ? "MODERATOR" : "USER";
         String token = jwtUtil.generateToken(user.getUsername(), role);
-        return new AuthResponse(token, user.getUsername(), role);
+        return new AuthResponse(token, user.getUsername(), role, null);
     }
 
     public AuthResponse login(LoginRequest request) {
@@ -51,14 +56,14 @@ public class AuthService {
         );
 
         UserAbstract user = userRepository.findByUsername(request.getUsername())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         if (user.isSuspended()) {
-            throw new RuntimeException("Account is suspended");
+            throw new AccountSuspendedException(user.getSuspendedUntil());
         }
 
         String role = (user instanceof Moderator) ? "MODERATOR" : "USER";
         String token = jwtUtil.generateToken(user.getUsername(), role);
-        return new AuthResponse(token, user.getUsername(), role);
+        return new AuthResponse(token, user.getUsername(), role, user.getSuspendedUntil());
     }
 }

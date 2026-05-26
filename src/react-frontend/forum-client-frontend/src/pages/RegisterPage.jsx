@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import './Auth.css' // Make sure the path to your CSS is correct!
+import './Auth.css'
+import germanShepardFilled from '../assets/german-shepard-filled.svg'
+import authService from '../services/authService'
+
+import { getErrorMessage } from '../utils/errorHelper'
 
 function RegisterPage() {
   const navigate = useNavigate()
@@ -10,23 +14,36 @@ function RegisterPage() {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (form.password !== form.confirmPassword) return setError('Passwords do not match')
-
     setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-      navigate('/login')
-    }, 1500)
-  }
+    setError('')
 
+    try {
+      await authService.register(form.username, form.email, form.password)
+      navigate('/login')
+    } catch (error) {
+      setError(getErrorMessage(error))
+    } finally {
+      setLoading(false)
+    }
+  }
   return (
     <div className='auth-page'>
+      <div className='moving-bg-layer' />
       <div className='auth-glow' />
       <div className='auth-card'>
-        <div className='auth-icon'>✦</div>
         <h1 className='auth-logo'>
+          <img
+            src={germanShepardFilled}
+            alt='German Shepherd'
+            style={{
+              height: '1.8em',
+              marginRight: '-4px',
+              filter: 'drop-shadow(0 0 8px rgba(208, 96, 255, 0.8))',
+            }}
+          />
           FEED<span>IT</span>
         </h1>
         <p className='auth-subtitle'>Initialize your member profile</p>
@@ -35,7 +52,7 @@ function RegisterPage() {
           <input
             name='username'
             placeholder='Username'
-            className='auth-input'
+            className='input-style'
             onChange={handleChange}
             required
           />
@@ -43,7 +60,7 @@ function RegisterPage() {
             name='email'
             type='email'
             placeholder='Email'
-            className='auth-input'
+            className='input-style'
             onChange={handleChange}
             required
           />
@@ -51,7 +68,7 @@ function RegisterPage() {
             name='password'
             type='password'
             placeholder='Password'
-            className='auth-input'
+            className='input-style'
             onChange={handleChange}
             required
           />
@@ -59,12 +76,12 @@ function RegisterPage() {
             name='confirmPassword'
             type='password'
             placeholder='Confirm Password'
-            className='auth-input'
+            className='input-style'
             onChange={handleChange}
             required
           />
 
-          {error && <div className='error-msg'>{error}</div>}
+          {error && <div className='auth-error'>{error}</div>}
 
           <button type='submit' className='auth-btn' disabled={loading}>
             {loading ? 'CREATING...' : 'CREATE ACCOUNT'} <span>→</span>

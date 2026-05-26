@@ -8,9 +8,8 @@ import lombok.*;
 
 @Getter @Setter @NoArgsConstructor
 public class Answer extends PostAbstract {
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "question_id")
-    private Question question;
-
+    @JoinColumn(name = "parent_post_id")
+    @org.hibernate.annotations.OnDelete(action = org.hibernate.annotations.OnDeleteAction.CASCADE)
+    private PostAbstract parentPost;
 }

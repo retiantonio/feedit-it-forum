@@ -1,0 +1,109 @@
+.post-actions-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.post-actions-trigger {
+  background: none;
+  border: none;
+  color: #b44fff4d;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  font-size: 0;
+  letter-spacing: 2px;
+}
+
+.post-actions-trigger:hover {
+  background: #b44fff1a;
+  color: #d060ff;
+  text-shadow: 0 0 8px #b44fff33;
+}
+
+.post-actions-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: linear-gradient(135deg, #16213ef2, #1a1a2ee6);
+  border: 1px solid #b44fff4d;
+  border-radius: 8px;
+  min-width: 160px;
+  box-shadow:
+    0 8px 20px #00000099,
+    0 0 15px #b44fff33;
+  z-index: 1000;
+  margin-top: 8px;
+}
+
+.post-action-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  color: #a89bc2;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.post-action-item:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.post-action-item:last-child {
+  border-radius: 0 0 8px 8px;
+}
+
+.post-action-item:hover:not(:disabled) {
+  background: #b44fff1a;
+  color: #d060ff;
+}
+
+.post-action-item.edit-action:hover {
+  background: #00f5ff1a;
+  color: #00f5ff;
+}
+
+.post-action-item.delete-action {
+  color: #ff6666;
+  border-top: 1px solid rgba(180, 79, 255, 0.2);
+}
+
+.post-action-item.delete-action:hover:not(:disabled) {
+  background: #ff66661a;
+  color: #ff8888;
+}
+
+.post-action-item.report-action {
+  color: #ff2d78;
+}
+
+.post-action-item.report-action:hover {
+  background: #ff2d781a;
+  color: #ff2d78;
+  text-shadow: 0 0 8px #ff2d7833;
+}
+
+.post-action-item.suspend-action {
+  color: #ff6666;
+  border-top: 1px solid rgba(180, 79, 255, 0.2);
+}
+
+.post-action-item.suspend-action:hover:not(:disabled) {
+  background: #ff66661a;
+  color: #ff8888;
+}
+
+.post-action-item:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

@@ -3,6 +3,8 @@ package com.retiantonio.onlineforum.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,10 +17,11 @@ public class Question extends PostAbstract {
     @Column(nullable = false)
     private String title;
 
-    @ElementCollection
-    @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "question_categories", joinColumns = @JoinColumn(name = "question_id"))
-    @Column(name = "category")
-    private List<Category> categories;
-
+    @ManyToMany
+    @JoinTable(
+            name = "question_categories",
+            joinColumns = @JoinColumn(name = "question_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private List<Category> categories = new ArrayList<>();
 }

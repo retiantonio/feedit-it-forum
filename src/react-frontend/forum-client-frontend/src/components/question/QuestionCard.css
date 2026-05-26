@@ -1,0 +1,222 @@
+/* QUESTION CARD */
+.q-card {
+  background: linear-gradient(135deg, #16213ecc 0%, #1a1a2e99 100%);
+  border: 2px solid #b44fff4d;
+  border-radius: 32px;
+  padding: 24px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 24px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px #b44fff1a;
+  z-index: 50;
+  align-items: center;
+}
+
+.q-card:hover {
+  border-color: #b44fff;
+  box-shadow:
+    0 0 25px rgba(180, 79, 255, 0.25),
+    inset 0 0 15px rgba(180, 79, 255, 0.05);
+}
+
+/* HEADER WITH TAGS AND ACTIONS */
+.q-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* TAG CONTAINER */
+.tag-container {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.tag-badge {
+  background: #b44fff26;
+  color: #d060ff;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 1px solid rgba(180, 79, 255, 0.3);
+  box-shadow: 0 0 8px rgba(180, 79, 255, 0.2);
+}
+
+.q-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #f0eaff;
+  text-shadow: 0 0 10px #d060ff4d;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.q-body-preview {
+  color: #a89bc2;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* EDIT FORM STYLES */
+.q-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.q-edit-input,
+.q-edit-textarea {
+  background: rgba(26, 26, 46, 0.7);
+  border: 1px solid rgba(180, 79, 255, 0.3);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #f0eaff;
+  font-family: inherit;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.q-edit-input:focus,
+.q-edit-textarea:focus {
+  outline: none;
+  border-color: #b44fff;
+  box-shadow: 0 0 15px rgba(180, 79, 255, 0.3);
+  background: rgba(26, 26, 46, 0.9);
+}
+
+.q-edit-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.q-edit-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.q-edit-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.q-edit-btn.save-btn {
+  background: linear-gradient(135deg, #b44fff, #ff2d78);
+  color: #ffffff;
+}
+
+.q-edit-btn.save-btn:hover:not(:disabled) {
+  box-shadow: 0 0 15px rgba(180, 79, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.q-edit-btn.cancel-btn {
+  background: rgba(180, 79, 255, 0.15);
+  color: #d060ff;
+  border: 1px solid rgba(180, 79, 255, 0.3);
+}
+
+.q-edit-btn.cancel-btn:hover {
+  background: rgba(180, 79, 255, 0.25);
+  border-color: #b44fff;
+}
+
+.q-edit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.q-edit-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.q-edit-category-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #a89bc2;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.q-edit-category-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.q-edit-category-pill {
+  background: rgba(26, 26, 46, 0.6);
+  border: 1px solid rgba(180, 79, 255, 0.3);
+  color: #a89bc2;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.q-edit-category-pill:hover {
+  border-color: #b44fff;
+  color: #d060ff;
+}
+
+.q-edit-category-pill.selected {
+  background: rgba(180, 79, 255, 0.2);
+  border-color: #b44fff;
+  color: #d060ff;
+  box-shadow: 0 0 10px rgba(180, 79, 255, 0.3);
+}
+
+.q-card-meta {
+  color: #6b5f80;
+  font-size: 13px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.q-report-btn {
+  background: none;
+  border: none;
+  color: #ff2d78;
+  cursor: pointer;
+  padding: 0;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s;
+}
+
+.q-report-btn:hover {
+  color: #ff2d78;
+  text-shadow: 0 0 8px rgba(255, 45, 120, 0.4);
+}
+
+.q-report-btn svg {
+  width: 14px;
+  height: 14px;
+}

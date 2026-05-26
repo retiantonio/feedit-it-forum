@@ -10,7 +10,10 @@
 
 body {
   background: #0a0a0f;
-  color: #aaaaaa;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(180, 79, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 45, 120, 0.05) 0%, transparent 50%);
+  color: #b0b0b0;
   font-family: 'Rajdhani', sans-serif;
   min-height: 100vh;
 }
@@ -26,17 +29,28 @@ button {
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 0;
+  height: 0;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0d0d1a;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ff2d7855;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff2d78;
+  background: transparent;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: none;
+}
+
+/* IE and Edge */
+html {
+  -ms-overflow-style: none;
 }
