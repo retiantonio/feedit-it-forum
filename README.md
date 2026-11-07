@@ -1,178 +1,106 @@
-# 📚 Softawre Design - 2026
+# Mini-StackOverflow
 
-# Project: Mini-StackOverflow
+A full-stack forum where users can ask questions, share answers, vote on posts, and help keep the community safe. Moderators can review reports, manage categories, and suspend users.
 
-## 👤 Student Information
+## Screenshots
 
-- **Name:** Reti Antonio
-- **GitHub Username:** @retiantonio
-- **Group:** 30232
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="readme/login.png" alt="Login page" width="420" />
+        <br />
+        <strong>Login</strong>
+      </td>
+      <td align="center">
+        <img src="readme/register.png" alt="Registration page" width="420" />
+        <br />
+        <strong>Register</strong>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="readme/dashboard.png" alt="Question dashboard" width="420" />
+        <br />
+        <strong>Question feed</strong>
+      </td>
+      <td align="center">
+        <img src="readme/postpage.png" alt="Question and answers page" width="420" />
+        <br />
+        <strong>Question and answers</strong>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="readme/createpost.png" alt="Create question form" width="420" />
+        <br />
+        <strong>Create a question</strong>
+      </td>
+      <td align="center">
+        <img src="readme/nestedanswers.png" alt="Nested answers" width="420" />
+        <br />
+        <strong>Nested answers</strong>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="readme/createreport.png" alt="Report post form" width="420" />
+        <br />
+        <strong>Report a post</strong>
+      </td>
+      <td align="center">
+        <img src="readme/moderatordashboard.png" alt="Moderator dashboard" width="420" />
+        <br />
+        <strong>Moderator dashboard</strong>
+      </td>
+    </tr>
+  </table>
+</div>
 
----
+## Features
 
-## 📈 Submission Table
+- Register and log in with JWT authentication
+- Ask questions, post answers, and reply in nested threads
+- Vote on questions and answers
+- Search and browse questions by category
+- Report posts and review reports as a moderator
+- Manage categories, user suspensions, and moderation activity
 
-- Update this table before each assignment submission.
+## Tech stack
 
-| Milestone                    | Tag    | Submission Date |    Status    |
-| :--------------------------- | :----- | :-------------- | :----------: |
-| Project Deliverable 1        | `v1.0` | 30/03/2026      | 🟢 Submitted |
-| Project Deliverable 2        | `v2.0` | 20/04/2026      | 🟢 Submitted |
-| Project Deliverable 3        | `v3.0` | 10/05/2026      | 🟢 Submitted |
-| Project Final Implementation | `v4.0` | 26/05/2026      | 🟢 Submitted |
+- **Frontend:** React, Vite, React Router, Axios
+- **Backend:** Java, Spring Boot, Spring Security, Spring Data JPA
+- **Database:** PostgreSQL
 
-> **Note:** To submit, make sure your work is pushed on the main branch, and create a tag
+## Run locally
 
-- `git tag -a v1.0 -m "project deliverable 1 completed"`
-- `git push origin v1.0`
-- Go to your repository on GitHub, click on the "Tags" tab. If you see v1.0, your submission is successful.
+### Prerequisites
 
-## 1. Project Description
+- Java 25
+- Node.js and npm
+- PostgreSQL
 
-**Mini-StackOverflow** is a full-stack web application that replicates core features of StackOverflow. It provides a platform where users can post questions, answer questions, vote on content, and moderators can manage the community by resolving reports and suspending users.
+### 1. Create the database
 
-### Core Features:
+Create a PostgreSQL database named `feedit_db`. The backend connects to `localhost:5432` using the credentials configured in `src/onlineforum/src/main/resources/application.properties`. Hibernate creates and updates the tables when the backend starts.
 
-- **User Authentication** - Secure registration and login with JWT tokens
-- **Questions & Answers** - Users can create questions with categories and reply with answers (threaded replies)
-- **Voting System** - Upvote/downvote questions and answers to highlight quality content
-- **Reporting System** - Users can report inappropriate posts for moderation review
-- **Moderation Dashboard** - Moderators can:
-  - View pending and resolved reports with post content
-  - Delete reported posts
-  - Suspend users for specific durations
-  - Manage activity logs
-  - Create and manage post categories
-- **Unified Search** - Search questions by keyword (title, body) or by category name
-- **Answer Threading** - Nested replies with cascade deletion
-- **Responsive UI** - Dark-themed, modern interface with smooth animations
+### 2. Start the backend
 
-## 2. Technologies Used
+```bash
+cd src/onlineforum
+./mvnw spring-boot:run
+```
 
-- **Backend:**
-  - Java 17 with Spring Boot 3.x
-  - Spring Security with JWT authentication
-  - Spring Data JPA with Hibernate
-  - PostgreSQL database
-- **Frontend:**
-  - React 18 with Vite
-  - React Router for navigation
-  - Axios for HTTP requests
-  - Lucide React for icons
-  - CSS with custom styling
-- **Tools:**
-  - Maven for backend build
-  - npm for frontend dependencies
-  - Git for version control
-  - Docker (optional for deployment)
+On Windows, run `mvnw.cmd spring-boot:run` instead.
 
-## 3. Setup and Installation
+### 3. Start the frontend
 
-### Prerequisites:
+In another terminal:
 
-- Java 17 or higher
-- Node.js 16+ and npm
-- PostgreSQL 12+
-- Maven 3.8+
-- Git
+```bash
+cd src/react-frontend/forum-client-frontend
+npm install
+npm run dev
+```
 
-### Installation:
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/retiantonio/project-retiantonio.git
-   cd project-retiantonio
-   ```
-
-2. **Backend Setup:**
-
-   ```bash
-   cd src/onlineforum
-   # Update application.properties with your PostgreSQL credentials
-   mvn clean install
-   mvn spring-boot:run
-   ```
-
-   Backend runs on `http://localhost:8080`
-
-3. **Frontend Setup:**
-
-   ```bash
-   cd src/react-frontend/forum-client-frontend
-   npm install
-   npm run dev
-   ```
-
-   Frontend runs on `http://localhost:5173`
-
-4. **Database Setup:**
-   - Create a PostgreSQL database: `onlineforum`
-   - Schema will be auto-created by Hibernate on first run
-   - Default connection: `localhost:5432/onlineforum`
-
-## 4. Execution
-
-1. **Start the Backend:**
-
-   ```bash
-   cd src/onlineforum
-   mvn spring-boot:run
-   ```
-
-   Wait for: `Started OnlineforumApplication` message
-
-2. **Start the Frontend:**
-
-   ```bash
-   cd src/react-frontend/forum-client-frontend
-   npm run dev
-   ```
-
-   Navigate to `http://localhost:5173` in your browser
-
-3. **Create an Account:**
-   - Click "Sign Up" on the homepage
-   - Enter username and password
-   - Login with your credentials
-
-4. **Test Features:**
-   - Create a question in a category
-   - View the question feed with filters
-   - Search for questions by keyword or category
-   - Post answers to questions
-   - Vote on questions/answers
-   - Report inappropriate content (if moderator, visit `/moderator` to manage reports)
-
-## 5. Execution Screenshots
-
-The application features a dark-themed, modern UI with the following pages:
-
-- **Home Page** - Question feed with search and filters by category
-- **Question Page** - Detailed view with answers, voting, and threading
-- **Auth Pages** - Login and registration forms
-- **Moderator Dashboard** - Reports management, user suspension, category management
-- **Activity Logs** - Moderation action tracking
-
-Screenshots can be added by placing images in `docs/screenshots/` directory.
-
-## 6. Known Issues & Future Improvements
-
-### Known Issues:
-
-- Real-time notifications not yet implemented
-- No email verification for new accounts
-- Search results limited to 100 results
-- No pagination on large result sets
-
-### Future Improvements:
-
-- WebSocket integration for real-time notifications and chat
-- Email verification and password reset
-- User reputation system
-- Advanced search with filters (date, author, upvotes)
-- Markdown support in question/answer text
-- Bulk moderation actions
-- User profile pages with stats
-- Answer acceptance system
-- Question bounty system
+Open the local URL printed by Vite, usually **http://localhost:5173**.

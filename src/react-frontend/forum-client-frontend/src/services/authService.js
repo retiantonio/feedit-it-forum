@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-const API_URL = 'https://unwhetted-indicatively-kimiko.ngrok-free.dev/api/auth'
+const API_URL = 'http://localhost:8080/api/auth'
 
 const ngrokConfig = {
   headers: {
     'Content-Type': 'application/json',
-    'ngrok-skip-browser-warning': 'true', // <--- Tell ngrok to let the request straight through
+    'ngrok-skip-browser-warning': 'true',
   },
 }
 
