@@ -1,4 +1,4 @@
-# Mini-StackOverflow
+# FEEDIT - IT Forum
 
 A full-stack forum where users can ask questions, share answers, vote on posts, and help keep the community safe. Moderators can review reports, manage categories, and suspend users.
 
